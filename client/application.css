@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+}
+#root{
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+}
+body{
+
+}
+main{
+    min-width: 80%;
+    max-width: 400px;
+    margin-inline: auto;
+    margin-block: 1em;
+    border-radius: 1em;
+
+}
+
+header,
+nav,
+footer{
+    padding-inline: 1em;
+}
+
+nav {
+    background-color: grey;
+    display: flex;
+    column-gap: 1em;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-block: 0.25em;
+}
+
+nav a{
+    color:white;
+    text-decoration: none;
+}
