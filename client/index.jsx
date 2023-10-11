@@ -1,5 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client"
+import MessageApplication from "./components/MessageApplication";
+import {BrowserRouter} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<h1>HEI VERDEN</h1>);
+root.render(
+    <BrowserRouter>
+    <MessageApplication/>
+    </BrowserRouter>);
