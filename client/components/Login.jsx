@@ -1,10 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 function Login() {
 
+    const navigate = useNavigate()
+
     function handleLogin() {
-        console.log("Test");
+
+
     }
 
     return (
@@ -12,11 +15,15 @@ function Login() {
             <form>
                 <label>
                     Username:
+                    <div>
                     <input type="text" name="username" />
+                    </div>
                 </label>
                 <label>
                     Password:
+                    <div>
                     <input type="password" name="password" />
+                    </div>
                 </label>
                 <div>
                     <button type="button" onClick={handleLogin}>

@@ -10,13 +10,7 @@ function MessageApplication (){
         </header>
         <nav>
             <Link to={"/"}>Home</Link>
-            <Link to={"/"}>Home</Link>
-            <Link to={"/"}>Home</Link>
-            <Link to={"/"}>Home</Link>
-            <Link to={"/"}>Home</Link>
-            <Link to={"/"}>Home</Link>
-            <Link to={"/"}>Home</Link>
-            <Link to={"/"}>Home</Link>
+            <Link to={"/messageboard"}>MessageBoard</Link>
             <div style={{flex: 1}}></div>
             <Link to={"/login"}>Login</Link>
         </nav>

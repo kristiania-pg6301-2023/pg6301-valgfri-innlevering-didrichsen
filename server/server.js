@@ -1,7 +1,12 @@
 import express from "express"
 import * as path from "path";
+import bodyParser from "body-parser";
+import {authenticationRoutes} from "./controller/authenthicationRoutes.js";
 
 const app = express();
+app.use(bodyParser.json());
+
+app.use("/api/authentication", authenticationRoutes);
 
 app.use(express.static("../client/dist"));
 

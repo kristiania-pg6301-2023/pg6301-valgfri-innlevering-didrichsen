@@ -7,25 +7,29 @@ function SignUp () {
     const [password, setPassword] = useState("");
     const [confirmedPassword,setConfirmedPassword] = useState("");
     const [errorMessage,setErrorMessage] = useState("");
+    const navigate = useNavigate();
 
     const passwordsMismatch = useMemo(() => {
         return confirmedPassword.length > 0 && password !== confirmedPassword;
     }, [password, confirmedPassword])
 
-    async function handleSignUp() {
-
-        const navigate = useNavigate();
+    async function handleSignUp(e) {
+        e.preventDefault();
 
         try{
-            const response = await fetch("/api/signup", {
+            const response = await fetch("/api/authentication/signup", {
                 method:"POST",
-                body: JSON.stringify({username,password,confirmedPassword}),
+                body: JSON.stringify({username,password}),
                 headers:{
                     "Content-Type":"application/json"
                 }
             })
+
             if(response.ok) {
+                const data = await response.json();
+                console.log(data.message)
                 navigate("/login");
+
             }
             setErrorMessage(response.message);
         } catch (error){
@@ -40,20 +44,26 @@ function SignUp () {
             <form>
                 <label>
                     Username:
-                    <input type="text" name="username" onChange={(e)=> setUsername(e.target.value)}/>
+                    <div>
+                    <input className="input" type="text" name="username" onChange={(e)=> setUsername(e.target.value)}/>
+                    </div>
                 </label>
                 <label>
                     Password:
-                    <input type="password" name="password" onChange={(e)=>setPassword(e.target.value)}/>
-                </label>
+                    <div>
+                    <input className="input" type="password" name="password" onChange={(e)=>setPassword(e.target.value)}/>
+                    </div>
+                    </label>
                 <label>
                     Confirm Password:{passwordsMismatch && "!!!!"}
+                    <div>
                     <input type="password" name="confirmPassword" onChange={(e) => setConfirmedPassword(e.target.value)}
                     style={!passwordsMismatch ? {} : {border: "1px solid red"}}/>
-                </label>
+                    </div>
+                    </label>
                 <div>
 
-                        <button onClick={handleSignUp} disabled={passwordsMismatch}>Sign up</button>
+                        <button onClick={(e)=>handleSignUp(e)} disabled={passwordsMismatch}>Sign up</button>
 
                 </div>
             </form>
