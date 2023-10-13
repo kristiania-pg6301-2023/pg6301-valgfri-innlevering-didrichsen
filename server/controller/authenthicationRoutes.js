@@ -23,6 +23,9 @@ authenticationRoutes.post("/login", async (req, res) => {
         if (!result.success) {
             res.status(400).json({message: result.message})
         }
+
+        res.set("Authorization","true");
+        res.cookie("Token", result.id, {signed: true})
         res.status(200).json({message: result.message});
     } catch (error){
         console.error("Error from service layer when trying to retrieve user credentials", error.message);

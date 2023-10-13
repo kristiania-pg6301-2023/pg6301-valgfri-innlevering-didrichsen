@@ -6,12 +6,12 @@ dotenv.config();
 const url = process.env.MONGODB;
 const client = new MongoClient(url);
 
-export async function postUserMessage(message, time) {
+export async function postUserMessage(message, time, user) {
     try {
         await client.connect();
         const db = await client.db("messageApp");
         const collection = db.collection("snapboard");
-        return await collection.insertOne({message: message, time: time});
+        return await collection.insertOne({message: message, time: time, user: user});
 
     } catch (error) {
         throw error;

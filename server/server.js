@@ -3,9 +3,11 @@ import * as path from "path";
 import bodyParser from "body-parser";
 import {authenticationRoutes} from "./controller/authenthicationRoutes.js";
 import {snapBoardRoutes} from "./controller/snapBoardRoutes.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cookieParser("secret-cookies"))
 
 app.use("/api/authentication", authenticationRoutes);
 app.use("/api/snapboard", snapBoardRoutes);

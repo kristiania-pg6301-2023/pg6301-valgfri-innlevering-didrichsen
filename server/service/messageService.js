@@ -1,9 +1,15 @@
 import {fetchMessages, postUserMessage} from "../repository/messageDataAccess.js";
+import {getUserById} from "../repository/userDataAccess.js";
 
-export async function addMessage(message, time) {
+export async function addMessage(message, time, id) {
 
     try {
-        const isPosted = await postUserMessage(message, time);
+
+        const user = await getUserById(id);
+
+        console.log("username: " + user.username)
+
+        const isPosted = await postUserMessage(message, time, user.username);
 
         if (!isPosted.acknowledged) {
             return {success: false, message: "Failed to post message"}

@@ -5,8 +5,10 @@ export const snapBoardRoutes = express.Router();
 
 snapBoardRoutes.post("/postmessage", async (req, res) => {
     const {message, time} = req.body;
+    const cookie = req.signedCookies.Token;
+    console.log(cookie)
     try {
-        const result = await addMessage(message, time);
+        const result = await addMessage(message, time, cookie);
 
         if (!result.success){
             res.status(400).json({message: result.message})
