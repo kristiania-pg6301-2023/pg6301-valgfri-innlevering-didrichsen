@@ -3,7 +3,7 @@ import {useState} from "react";
 function MessageInput({fetchMessages}){
 
     const [message,setMessage] = useState("");
-    const [time, setTime] = useState("")
+    const [time, setTime] = useState("1");
 
     async function handleSubmitMessage(e){
         e.preventDefault()
@@ -39,7 +39,7 @@ function MessageInput({fetchMessages}){
             ></textarea>
             <label>
                 Disappearing message:
-            <select defaultValue="1" onChange={(e) => setTime(e.target.value)}>
+            <select onChange={(e) => setTime(e.target.value)}>
                 <option value="1">One Minute</option>
                 <option value="5">Five Minutes</option>
                 <option value="10">Ten Minutes</option>

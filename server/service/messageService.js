@@ -3,10 +3,14 @@ import {getUserById} from "../repository/userDataAccess.js";
 
 export async function addMessage(message, time, id) {
 
+
         let timeToDelete = "";
 
-        parseInt(time);
-        time = time * 1000 * 60;
+        if (time!== "forever"){
+            parseInt(time);
+            time = time * 1000 * 60;
+        }
+
 
         if (time !== "forever") {
             const newTime = Date.now() + parseInt(time);
@@ -14,8 +18,6 @@ export async function addMessage(message, time, id) {
         } else {
             timeToDelete = time;
         }
-
-        console.log("TIME:" + timeToDelete)
 
     try {
 
@@ -50,14 +52,10 @@ export async function getAllMessages(){
                 messagesToReturn.push(messages[i]);
             }
 
-            console.log( "time: " +parseInt(messages[i].time) + " Message:" + messages[i].message)
-            console.log("date now: " + Date.now())
-
             if(parseInt(messages[i].time) > Date.now()){
                 messagesToReturn.push(messages[i]);
             }
         }
-        console.log("message return: " + messagesToReturn)
 
         return {success:true, message:"Retrieved messages", messages:messagesToReturn};
 
