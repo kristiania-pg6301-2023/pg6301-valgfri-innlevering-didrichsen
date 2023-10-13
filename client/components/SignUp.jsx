@@ -14,6 +14,7 @@ function SignUp () {
     }, [password, confirmedPassword])
 
     async function handleSignUp(e) {
+        setErrorMessage("");
         e.preventDefault();
 
         try{
@@ -24,14 +25,13 @@ function SignUp () {
                     "Content-Type":"application/json"
                 }
             })
-
+            const data = await response.json();
             if(response.ok) {
-                const data = await response.json();
                 console.log(data.message)
                 navigate("/login");
 
             }
-            setErrorMessage(response.message);
+            setErrorMessage(data.message);
         } catch (error){
             console.error("Error signing up", error)
             setErrorMessage(error.message)
@@ -40,7 +40,7 @@ function SignUp () {
 
     return (
         <div>
-            {errorMessage?<div>Error signing up. Try again.</div>:null}
+            {errorMessage?<div>Error signing up. Try again. Try changing username</div>:null}
             <form>
                 <label>
                     Username:

@@ -46,3 +46,15 @@ export async function getUserById(userId) {
         throw error;
     }
 }
+export async function getUserByUsername(username){
+    try{
+        await client.connect();
+        const db = client.db("messageApp");
+        const collection = db.collection("users");
+
+        return await collection.findOne({username: username});
+
+    } catch (error){
+        throw error;
+    }
+}

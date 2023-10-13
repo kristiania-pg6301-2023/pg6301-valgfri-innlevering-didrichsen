@@ -1,9 +1,15 @@
-import {getUserCredentials, postUser} from "../repository/userDataAccess.js";
+import {getUserByUsername, getUserCredentials, postUser} from "../repository/userDataAccess.js";
+import {verifyPassword,hashPassword} from "../utils/sha256.js";
 
 export async function registerUser(username, password){
     try{
+        const isAlreadyUser = await getUserByUsername(username);
 
-        const userObject = await postUser(username, password);
+        if(isAlreadyUser){
+            return {success:false,message:"Choose another username"};
+        }
+
+        const userObject = await postUser(username, hashPassword(password));
 
         if(!userObject.acknowledged){
             console.log("failed to post user")
@@ -18,10 +24,16 @@ export async function registerUser(username, password){
 export async function userLogin(username, password){
     try {
 
-        const userCredentials = await getUserCredentials(username, password);
+        const user = await getUserByUsername(username);
 
-        const id = userCredentials[0]._id;
-        if (userCredentials.length !== 1){
+        if(!user){
+            return {success:false,message:"Not a valid username."};
+        }
+
+        const isVerified = verifyPassword(password,user.password);
+
+        const id = user._id;
+        if (!isVerified){
             return {success:false,message:"Login failed"};
         }
 
