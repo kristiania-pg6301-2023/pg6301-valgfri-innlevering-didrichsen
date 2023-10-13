@@ -46,7 +46,7 @@ function MessageInput({fetchMessages}){
                 <option value="forever">Forever Baby</option>
             </select>
             </label>
-            <button   style={{
+            <button style={{
                 width: '20%',
                 whiteSpace: 'normal',
                 wordWrap: 'break-word',
