@@ -37,7 +37,7 @@ function MessageInput({fetchMessages}){
                 rows={4} // Adjust the number of visible rows
                 cols={50} // Adjust the number of visible columns
             ></textarea>
-            <label>
+            <label style={{padding: "0.5em"}}>
                 Disappearing message:
             <select onChange={(e) => setTime(e.target.value)}>
                 <option value="1">One Minute</option>
@@ -46,7 +46,12 @@ function MessageInput({fetchMessages}){
                 <option value="forever">Forever Baby</option>
             </select>
             </label>
-            <button onClick={(e) => handleSubmitMessage(e)}>Post SnapMessage</button>
+            <button   style={{
+                width: '20%',
+                whiteSpace: 'normal',
+                wordWrap: 'break-word',
+                overflowWrap: 'break-word',
+            }} onClick={(e) => handleSubmitMessage(e)}>Post SnapMessage</button>
         </div>
     )
 }

@@ -68,5 +68,12 @@ nav a{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-
+}
+.home-container{
+    display: flex;
+    border: 2px lightgray dashed;
+    padding: 2em;
+}
+.homeText{
+    font-family: "Toppan Bunkyu Mincho";
 }

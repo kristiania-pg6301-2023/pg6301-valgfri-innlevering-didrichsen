@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import MessageInput from "./MessageInput";
-import {json} from "react-router-dom";
+import {json, Link} from "react-router-dom";
 import AuthContext, {useAuth} from "../context/AuthContext";
 
 const SnapBoard = () => {
@@ -43,7 +43,7 @@ const SnapBoard = () => {
                 )):<div>loading ...</div>}
             </ul>
             <MessageInput fetchMessages={fetchMessages} />
-        </div>: <div>Log in to see SnapBoard</div>}
+        </div>: <div><Link to={"/login"}><button>Login</button></Link> to see SnapBoard 👻</div>}
         </>
 
 

@@ -12,7 +12,9 @@ function MessageApplication (){
     return (
     <>
         <header>
-            <h1>SnapBoard👻</h1>
+            <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
+                <h2>SnapBoard 👻</h2>
+            </Link>
         </header>
         <nav>
             <Link to={"/"}>Home</Link>
