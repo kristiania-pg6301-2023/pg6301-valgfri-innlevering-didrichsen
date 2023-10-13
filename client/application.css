@@ -47,3 +47,26 @@ nav a{
     color:white;
     text-decoration: none;
 }
+.message-board{
+
+}
+.message-list{
+    border: 0.25em solid black;
+    padding: 0;
+
+}
+.message-item{
+    list-style-type: none;
+    border: 1px solid black;
+
+   padding: 0.75em;
+}
+.message-list-message{
+    text-decoration: none;
+}
+#massage-input-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}

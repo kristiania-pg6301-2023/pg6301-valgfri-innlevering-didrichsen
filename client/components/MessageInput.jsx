@@ -32,6 +32,7 @@ function MessageInput({fetchMessages}){
             <textarea
                 id="text"
                 name="text"
+                value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 rows={4} // Adjust the number of visible rows
                 cols={50} // Adjust the number of visible columns
