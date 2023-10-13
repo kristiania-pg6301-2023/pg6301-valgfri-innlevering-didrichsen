@@ -55,10 +55,10 @@ function SignUp () {
                     </div>
                     </label>
                 <label>
-                    Confirm Password:{passwordsMismatch && "!!!!"}
+                    Confirm Password:{passwordsMismatch && "Password must match bitch!"}
                     <div>
                     <input type="password" name="confirmPassword" onChange={(e) => setConfirmedPassword(e.target.value)}
-                    style={!passwordsMismatch ? {} : {border: "1px solid red"}}/>
+                    style={!passwordsMismatch ? {} : {border: "3px solid red"}}/>
                     </div>
                     </label>
                 <div>

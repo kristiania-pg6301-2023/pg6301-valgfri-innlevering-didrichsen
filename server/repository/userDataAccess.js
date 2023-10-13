@@ -8,14 +8,25 @@ const client = new MongoClient(url);
 
 export async function postUser(username,password){
     try {
-        console.log("WITHIN TRY")
+
         await client.connect();
         const db = await client.db("messageApp");
-        const collection = await db.collection("users");
-        return collection.insertOne({username:username, password:password});
+        const collection = db.collection("users");
+        return await collection.insertOne({username:username, password:password});
 
     } catch (error) {
-        console.log("WITHIN ERROR CATCH BLOCK")
+        throw error;
+    }
+}
+
+export async function getUserCredentials(username, password){
+    try {
+        await client.connect();
+        const db = await client.db("messageApp");
+        const collection = db.collection("users");
+        return await collection.find({username:username, password:password}).toArray();
+
+    } catch (error){
         throw error;
     }
 }

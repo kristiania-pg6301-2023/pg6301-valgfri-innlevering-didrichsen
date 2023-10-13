@@ -1,4 +1,4 @@
-import {postUser} from "../repository/userDataAccess.js";
+import {getUserCredentials, postUser} from "../repository/userDataAccess.js";
 
 export async function registerUser(username, password){
     try{
@@ -13,6 +13,19 @@ export async function registerUser(username, password){
         return {success:true,message:""};
     }
     catch (error){
+    }
+}
 
+export async function userLogin(username, password){
+    try {
+
+        const isSuccessful = await getUserCredentials(username, password);
+
+        if (isSuccessful.length !== 1){
+            return {success:false,message:"Login failed"};
+        }
+        return {success:true, message: "Successful login"};
+    } catch (error){
+        throw error;
     }
 }

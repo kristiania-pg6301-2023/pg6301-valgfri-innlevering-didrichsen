@@ -6,18 +6,18 @@ function MessageApplication (){
     return (
     <>
         <header>
-            <h1>Message Board</h1>
+            <h1>SnapBoard👻</h1>
         </header>
         <nav>
             <Link to={"/"}>Home</Link>
-            <Link to={"/messageboard"}>MessageBoard</Link>
+            <Link to={"/messageboard"}>SnapBoard</Link>
             <div style={{flex: 1}}></div>
             <Link to={"/login"}>Login</Link>
         </nav>
         <main>
             <MessageApplicationRoutes/>
         </main>
-        <footer>By Arian and Simen</footer>
+        <footer>By Arian☠️ and Simen☠️</footer>
 
     </>
     );
