@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-function MessageInput(){
+function MessageInput({fetchMessages}){
 
     const [message,setMessage] = useState("");
     const [time, setTime] = useState("")
@@ -18,6 +18,7 @@ function MessageInput(){
             })
             setMessage("");
             setTime("");
+            await fetchMessages();
 
         } catch (error){
             throw error;

@@ -17,3 +17,15 @@ export async function postUserMessage(message, time) {
         throw error;
     }
 }
+
+export async function fetchMessages(){
+    try {
+        await client.connect();
+        const db = await client.db("messageApp");
+        const collection = db.collection("snapboard");
+        return await collection.find({}).toArray();
+
+    }catch (error){
+        throw error;
+    }
+}

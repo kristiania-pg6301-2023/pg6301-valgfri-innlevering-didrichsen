@@ -5,16 +5,12 @@ import SnapBoard from "./SnapBoard";
 
 function MessageApplicationRoutes () {
 
-    const message = [{
-        message:"Hei på på deg.",
-        username:"SIMRIK"
-    }]
 
     return (
         <Routes>
             <Route path={"/login"} element={<Login/>} />
             <Route path={"/signup"} element={<SignUp/>} />
-            <Route path={"/messageboard"} element={<SnapBoard messages={message}/>} />
+            <Route path={"/messageboard"} element={<SnapBoard />} />
         </Routes>
     )
 

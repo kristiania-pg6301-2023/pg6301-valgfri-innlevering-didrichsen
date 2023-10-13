@@ -1,6 +1,5 @@
 import express from "express";
 import {registerUser, userLogin} from "../service/authenthicationService.js";
-import e from "express";
 
 export const authenticationRoutes = express.Router();
 
