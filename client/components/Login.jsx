@@ -1,10 +1,13 @@
-import React, {useMemo, useState} from "react";
+import React, {useContext, useMemo, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
+import AuthContext, {useAuth} from "../context/AuthContext";
 
 function Login() {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+
+    const {setAuth} = useAuth();
 
     const navigate = useNavigate()
 
@@ -25,7 +28,8 @@ function Login() {
             },
         });
         if (res.ok) {
-            navigate("/messageboard");
+            setAuth(true);
+            navigate("/snapboard");
         }
         setUsername("");
         setPassword("");

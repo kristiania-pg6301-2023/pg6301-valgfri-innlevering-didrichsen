@@ -24,7 +24,7 @@ authenticationRoutes.post("/login", async (req, res) => {
             res.status(400).json({message: result.message})
         }
 
-        res.set("Authorization","true");
+        res.set("authorization","true");
         res.cookie("Token", result.id, {signed: true})
         res.status(200).json({message: result.message});
     } catch (error){

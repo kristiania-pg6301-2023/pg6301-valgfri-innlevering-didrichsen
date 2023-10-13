@@ -10,7 +10,7 @@ function MessageApplicationRoutes () {
         <Routes>
             <Route path={"/login"} element={<Login/>} />
             <Route path={"/signup"} element={<SignUp/>} />
-            <Route path={"/messageboard"} element={<SnapBoard />} />
+            <Route path={"/snapboard"} element={<SnapBoard />} />
         </Routes>
     )
 

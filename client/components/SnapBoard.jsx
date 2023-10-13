@@ -1,12 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import MessageInput from "./MessageInput";
 import {json} from "react-router-dom";
+import AuthContext, {useAuth} from "../context/AuthContext";
 
 const SnapBoard = () => {
 
     const [messages, setMessages] = useState([]);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
 
+    const {auth} = useAuth();
 
     async function fetchMessages(){
         try {
@@ -27,6 +29,8 @@ const SnapBoard = () => {
     }, []);
 
     return (
+        <>
+        {auth ?
         <div className="message-board">
             <h2>SnapBoard 👻</h2>
             <ul className="message-list">
@@ -39,7 +43,8 @@ const SnapBoard = () => {
                 )):<div>loading ...</div>}
             </ul>
             <MessageInput fetchMessages={fetchMessages} />
-        </div>
+        </div>: <div>Log in to see SnapBoard</div>}
+        </>
 
 
     );

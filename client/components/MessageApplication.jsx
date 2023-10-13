@@ -1,7 +1,13 @@
 import {Link} from "react-router-dom";
 import MessageApplicationRoutes from "./MessageApplicationRoutes";
+import {useAuth} from "../context/AuthContext";
+
+
 
 function MessageApplication (){
+
+    const {setAuth,auth} = useAuth();
+
 
     return (
     <>
@@ -10,9 +16,11 @@ function MessageApplication (){
         </header>
         <nav>
             <Link to={"/"}>Home</Link>
-            <Link to={"/messageboard"}>SnapBoard</Link>
+            <Link to={"/snapboard"}>SnapBoard</Link>
             <div style={{flex: 1}}></div>
+            {!auth ?
             <Link to={"/login"}>Login</Link>
+            : <Link to={"/login"} onClick={()=>setAuth(false)}>Logout</Link>}
         </nav>
         <main>
             <MessageApplicationRoutes/>
