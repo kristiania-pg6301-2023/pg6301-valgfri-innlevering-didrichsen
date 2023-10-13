@@ -5,6 +5,25 @@ function MessageInput(){
     const [message,setMessage] = useState("");
     const [time, setTime] = useState("")
 
+    async function handleSubmitMessage(e){
+        e.preventDefault()
+
+        try {
+            const response = await fetch("/api/snapboard/postmessage", {
+                method: "POST",
+                body: JSON.stringify({message, time}),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            setMessage("");
+            setTime("");
+
+        } catch (error){
+            throw error;
+        }
+    }
+
 
     return (
         <div id="massage-input-container">
@@ -18,14 +37,14 @@ function MessageInput(){
             ></textarea>
             <label>
                 Disappearing message:
-            <select>
+            <select defaultValue="1" onChange={(e) => setTime(e.target.value)}>
                 <option value="1">One Minute</option>
                 <option value="5">Five Minutes</option>
                 <option value="10">Ten Minutes</option>
                 <option value="forever">Forever Baby</option>
             </select>
             </label>
-            <button>Post SnapMessage</button>
+            <button onClick={(e) => handleSubmitMessage(e)}>Post SnapMessage</button>
         </div>
     )
 }
