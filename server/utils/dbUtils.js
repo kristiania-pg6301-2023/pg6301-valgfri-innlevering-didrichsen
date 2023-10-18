@@ -13,7 +13,7 @@ export async function connectToDatabase(){
     }
     try {
         const client = await MongoClient.connect(uri);
-        const db = await client.db("messageApp");
+        const db = await client.db("SNAP_BOARD_SCHOOL");
 
         cachedDB = db;
         return db;
