@@ -1,20 +1,17 @@
-import React, {useContext, useMemo, useState} from "react";
+import React, { useMemo, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import AuthContext, {useAuth} from "../context/AuthContext";
 
 function Login() {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
-    const {setAuth} = useAuth();
+    const [errorMessage,setErrorMessage] = useState();
 
     const navigate = useNavigate()
 
     const isValidCredentials = useMemo(() => {
         return username.length === 0 && password.length === 0;
     }, [ username, password])
-
 
 
     async function handleLogin(e) {
@@ -28,9 +25,14 @@ function Login() {
             },
         });
         if (res.ok) {
-            setAuth(true);
+            setUsername("");
+            setPassword("");
             navigate("/snapboard");
         }
+
+        const data = await res.json();
+
+        setErrorMessage(data.message)
         setUsername("");
         setPassword("");
     }
@@ -58,6 +60,7 @@ function Login() {
                     <Link to="/signup">
                         <button>Sign up</button>
                     </Link>
+                    {errorMessage?<div>{errorMessage}</div>:null}
                 </div>
             </form>
         </div>
