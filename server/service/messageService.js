@@ -1,5 +1,5 @@
 import {fetchMessages, postUserMessage, deletePostById} from "../repository/messageDataAccess.js";
-import {getUserById} from "../repository/userDataAccess.js";
+import {getGoogleUsernameBasedOnId, getUserById} from "../repository/userDataAccess.js";
 
 export async function addMessage(message, time, id) {
 
@@ -20,7 +20,11 @@ export async function addMessage(message, time, id) {
 
     try {
 
-        const user = await getUserById(id);
+        let user = await getUserById(id);
+
+        if(!user){
+            user = await getGoogleUsernameBasedOnId(id);
+        }
 
         const isPosted = await postUserMessage(message, timeToDelete, user.username);
 
@@ -53,8 +57,15 @@ export async function deletePost(id){
 
 export async function getAllMessages(id){
 
+
+
     try {
-        const user = await getUserById(id);
+        let user = await getUserById(id);
+
+
+        if(!user){
+            user = await getGoogleUsernameBasedOnId(id);
+        }
 
         const messages = await fetchMessages();
         const messagesToReturn = [];

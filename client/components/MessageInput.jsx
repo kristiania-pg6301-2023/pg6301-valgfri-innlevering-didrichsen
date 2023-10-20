@@ -7,8 +7,6 @@ function MessageInput({fetchMessages}){
 
     async function handleSubmitMessage(e){
         e.preventDefault()
-        console.log(message);
-        console.log(time);
 
         try {
             const response = await fetch("/api/snapboard/postmessage", {
