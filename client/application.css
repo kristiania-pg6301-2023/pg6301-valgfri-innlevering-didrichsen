@@ -79,3 +79,21 @@ nav a{
 .homeText{
     font-family: "Toppan Bunkyu Mincho";
 }
+
+.google-button {
+    margin-top: 0.5em;
+    display: inline-block;
+    background-color: #ffffff;
+    color: #000000;
+    text-decoration: none;
+    padding: 0.15em 0.5em;
+    border-radius: 0.4em;
+    border: 0.15em solid #0318a2;
+    font-weight: lighter;
+    transition: background-color 0.3s;
+}
+
+.google-button:hover {
+    background-color: #eeebeb;
+}
+

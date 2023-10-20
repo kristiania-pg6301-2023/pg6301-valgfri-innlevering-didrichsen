@@ -58,6 +58,10 @@ const SnapBoard = () => {
         console.log(messages)
     }, [messages]);
 
+    useEffect(() => {
+        console.log(isAuthorized);
+    }, [isAuthorized]);
+
 
     useEffect(() => {
         isAuthorized?fetchMessages().then(loading=>true) : false;
